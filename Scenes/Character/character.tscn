@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpjhs0lqsgyex"]
+[gd_scene load_steps=3 format=3 uid="uid://cpjhs0lqsgyex"]
 
+[ext_resource type="Script" uid="uid://dmwprbg0u5qtc" path="res://Code/Character/character.gd" id="1_isa4f"]
 [ext_resource type="TileSet" uid="uid://cq5vem7f4wkgs" path="res://Data/TileSets/main_tileset.tres" id="1_vwk55"]
 
-[node name="player" type="Node2D"]
+[node name="character" type="Node2D"]
+script = ExtResource("1_isa4f")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(-8, 8)
+position = Vector2(0, 8)
 tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 4, 0, 0, 0, 0, 0)
 tile_set = ExtResource("1_vwk55")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(4, 4)

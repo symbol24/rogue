@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5vpg2bm7xlce"]
+
+[ext_resource type="TileSet" uid="uid://cq5vem7f4wkgs" path="res://Data/TileSets/main_tileset.tres" id="1_0khmj"]
+
+[node name="ArrivalStairs" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-4, 4)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 5, 0, 3, 0, 0, 0)
+tile_set = ExtResource("1_0khmj")

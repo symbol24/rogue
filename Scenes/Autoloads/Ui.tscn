@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cokxtgfjxt8mi"]
+
+[ext_resource type="Script" uid="uid://cpslion7mes55" path="res://Code/Autoloads/ui.gd" id="1_8svua"]
+[ext_resource type="Script" uid="uid://by54wm8kekb45" path="res://Code/Ui/button_manager.gd" id="2_ntdin"]
+[ext_resource type="Script" uid="uid://cyo3fc3ouga8v" path="res://Code/Ui/Wrappers/rid_signal_button.gd" id="2_py0m3"]
+
+[node name="Ui" type="CanvasLayer"]
+script = ExtResource("1_8svua")
+
+[node name="button_manager" type="Node" parent="."]
+script = ExtResource("2_ntdin")
+
+[node name="Debug" type="Control" parent="."]
+custom_minimum_size = Vector2(426, 240)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RidSignalButton" type="Button" parent="Debug"]
+layout_mode = 0
+offset_left = 377.0
+offset_top = 211.0
+offset_right = 411.0
+offset_bottom = 228.0
+theme_override_font_sizes/font_size = 6
+text = "generate"
+script = ExtResource("2_py0m3")
+id = &"generate_map"
+metadata/_custom_type_script = "uid://cyo3fc3ouga8v"

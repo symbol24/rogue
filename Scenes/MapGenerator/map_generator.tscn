@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsek53jrmkie1"]
+
+[ext_resource type="Script" uid="uid://bmdcp05lffaxw" path="res://Code/MapGenerator/map_generator.gd" id="1_iruqi"]
+
+[node name="MapGenerator" type="Node" groups=["map_generator"]]
+script = ExtResource("1_iruqi")
+metadata/_custom_type_script = "uid://bmdcp05lffaxw"
+
+[node name="rooms" type="Node2D" parent="."]
+unique_name_in_owner = true
