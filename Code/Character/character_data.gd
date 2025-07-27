@@ -13,7 +13,7 @@ class_name CharacterData extends Resource
 
 # Current Stats
 var level := 1
-var exp := 0
+var xp := 0
 var hp:int
 var max_hp:int
 var armor:int
@@ -26,7 +26,7 @@ var lives:int
 
 func setup_character_data() -> void:
 	level = 1
-	exp = 0
+	xp = 0
 	hp = starting_hp
 	max_hp = starting_hp
 	armor = starting_armor

@@ -9,5 +9,8 @@ func _manage_button(id:StringName) -> void:
 	match id:
 		&"generate_map":
 			Signals.generate_test_map.emit(MapGenerator.SCREENSIZE)
+		&"debug_generate_map":
+			Signals.remove_character.emit()
+			Signals.generate_test_map.emit(MapGenerator.SCREENSIZE)
 		_:
 			pass

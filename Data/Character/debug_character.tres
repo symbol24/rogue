@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=2 format=3 uid="uid://bq683wyy7cl23"]
+
+[ext_resource type="Script" uid="uid://cvq440rvtf8a8" path="res://Code/Character/character_data.gd" id="1_5vp26"]
+
+[resource]
+script = ExtResource("1_5vp26")
+id = &"debug"
+starting_hp = 10
+starting_armor = 0
+starting_physical_power = 1
+starting_mp = 0
+starting_magical_power = 1
+starting_lives = 1
+metadata/_custom_type_script = "uid://cvq440rvtf8a8"

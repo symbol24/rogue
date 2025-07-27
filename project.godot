@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Signals="*res://Code/Autoloads/signals.gd"
+InputManager="*res://Code/Autoloads/input_manager.gd"
 GM="*res://Scenes/Autoloads/game_manager.tscn"
 UI="*res://Scenes/Autoloads/Ui.tscn"
 
@@ -37,7 +38,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdgdtoolkit/plugin.cfg")
+enabled=PackedStringArray("res://addons/gdgdtoolkit/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg")
 
 [file_customization]
 

@@ -1,0 +1,77 @@
+{
+	"categories": [
+		{
+			"uuid": "6d674e22-140f-4298-9c82-faa19c79589b",
+			"title": "Task",
+			"color": "70fa9c"
+		},
+		{
+			"uuid": "07b845e2-fa07-4160-aec2-56c7a9ffe413",
+			"title": "Backlog",
+			"color": "59a7f9"
+		},
+		{
+			"uuid": "807d8559-fd44-4380-b0d5-d614f843635c",
+			"title": "Bug",
+			"color": "e012a8"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "662d3979-8c01-472a-8083-61dbf897f65b",
+			"title": "Todo",
+			"tasks": [
+				"8459a269-c839-4329-b304-9140b771ba37",
+				"a36e7df0-18a4-4474-993d-359c2aed3596"
+			]
+		},
+		{
+			"uuid": "684ec729-a60c-473f-846f-f7ef8ba7e33d",
+			"title": "Doing",
+			"tasks": [
+				"47622ae2-4916-4293-a2e6-9614a29ebf46"
+			]
+		},
+		{
+			"uuid": "569e7ba7-fc4a-40d8-aa71-b27deb548ee0",
+			"title": "Done",
+			"tasks": []
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "8459a269-c839-4329-b304-9140b771ba37",
+			"title": "doors",
+			"description": "add setting doors to rooms\nrandom amount based on rooms",
+			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
+			"steps": []
+		},
+		{
+			"uuid": "47622ae2-4916-4293-a2e6-9614a29ebf46",
+			"title": "Inputs",
+			"description": "- A manager that listens to and adds all inputs to an array\n- input manager stops input propagation\n- Input Processes register and de-register\n- Input processes deal with inputs",
+			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
+			"steps": []
+		},
+		{
+			"uuid": "a36e7df0-18a4-4474-993d-359c2aed3596",
+			"title": "fix walls to be walls and not floors",
+			"description": "",
+			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
+			"steps": []
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"662d3979-8c01-472a-8083-61dbf897f65b"
+			],
+			[
+				"684ec729-a60c-473f-846f-f7ef8ba7e33d"
+			],
+			[
+				"569e7ba7-fc4a-40d8-aa71-b27deb548ee0"
+			]
+		]
+	}
+}

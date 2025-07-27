@@ -12,3 +12,10 @@ signal map_ready()
 
 # UI
 signal button(id:StringName)
+
+# Inputs
+signal input_mode_changed
+signal input_focuse_changed
+
+# Character
+signal character_ready

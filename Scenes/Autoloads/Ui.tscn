@@ -26,5 +26,5 @@ offset_bottom = 228.0
 theme_override_font_sizes/font_size = 6
 text = "generate"
 script = ExtResource("2_py0m3")
-id = &"generate_map"
+id = &"debug_generate_map"
 metadata/_custom_type_script = "uid://cyo3fc3ouga8v"
