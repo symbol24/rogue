@@ -22,20 +22,23 @@
 			"title": "Todo",
 			"tasks": [
 				"8459a269-c839-4329-b304-9140b771ba37",
-				"a36e7df0-18a4-4474-993d-359c2aed3596"
+				"a36e7df0-18a4-4474-993d-359c2aed3596",
+				"07d6e1d2-d643-40f5-a121-de6f65d80d8e",
+				"ff334855-7a44-43bd-ba09-e3bc26f2576f",
+				"13dd907e-a267-47f3-8466-3d6ff03d9013"
 			]
 		},
 		{
 			"uuid": "684ec729-a60c-473f-846f-f7ef8ba7e33d",
 			"title": "Doing",
-			"tasks": [
-				"47622ae2-4916-4293-a2e6-9614a29ebf46"
-			]
+			"tasks": []
 		},
 		{
 			"uuid": "569e7ba7-fc4a-40d8-aa71-b27deb548ee0",
 			"title": "Done",
-			"tasks": []
+			"tasks": [
+				"47622ae2-4916-4293-a2e6-9614a29ebf46"
+			]
 		}
 	],
 	"tasks": [
@@ -56,6 +59,27 @@
 		{
 			"uuid": "a36e7df0-18a4-4474-993d-359c2aed3596",
 			"title": "fix walls to be walls and not floors",
+			"description": "",
+			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
+			"steps": []
+		},
+		{
+			"uuid": "07d6e1d2-d643-40f5-a121-de6f65d80d8e",
+			"title": "collectible items",
+			"description": "",
+			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
+			"steps": []
+		},
+		{
+			"uuid": "ff334855-7a44-43bd-ba09-e3bc26f2576f",
+			"title": "interactibles",
+			"description": "",
+			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
+			"steps": []
+		},
+		{
+			"uuid": "13dd907e-a267-47f3-8466-3d6ff03d9013",
+			"title": "basic enemy",
 			"description": "",
 			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
 			"steps": []

@@ -19,7 +19,23 @@ func setup_character(new_data:CharacterData, coords:Vector2i) -> void:
 
 
 func move_character(direction:StringName) -> void:
-	print("move in direction ", direction)
+	var new_pos:Vector2i = _current_location
+	match direction:
+		&"up":
+			new_pos += Vector2i.UP
+		&"down":
+			new_pos += Vector2i.DOWN
+		&"left":
+			new_pos += Vector2i.LEFT
+		&"right":
+			new_pos += Vector2i.RIGHT
+		_:
+			pass
+
+	if GM.map_generator != null and GM.map_generator.map.has(new_pos) and GM.map_generator.map[new_pos] != MapGenerator.WALL:
+		if GM.map_generator.map[new_pos] in [MapGenerator.FLOOR, MapGenerator.DOOR, MapGenerator.ENTRANCE, MapGenerator.EXIT]:
+			_current_location = new_pos
+			global_position = _current_location * 8
 
 
 func unregister_input() -> void:

@@ -50,7 +50,7 @@ func _toggle_focus_on_input_processes() -> void:
 	_clear_invalid_processes()
 	for each in _input_processes:
 		if is_instance_valid(each): each.toggle_focus(false)
-	
+
 	_input_processes[-1].toggle_focus(true)
 
 
@@ -71,6 +71,6 @@ func _clear_invalid_processes() -> void:
 		if not is_instance_valid(each):
 			ids.append(i)
 		i += 1
-	
+
 	for id in ids:
 		_input_processes.erase(null)

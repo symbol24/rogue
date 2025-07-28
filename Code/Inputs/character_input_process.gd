@@ -23,5 +23,5 @@ func _move(event:InputEvent) -> void:
 		direction = &"left"
 	elif event.is_action_released(&"right"):
 		direction = &"right"
-	
+
 	if direction != &"": _character.move_character(direction)

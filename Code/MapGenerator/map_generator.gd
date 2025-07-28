@@ -42,7 +42,7 @@ func _make_map(dimensions: Vector2i) -> void:
 	var room_datas := _finalize_datas(merged)
 	_display_rooms(room_datas)
 	_set_entrance_and_exit()
-	
+
 	Signals.map_ready.emit()
 
 
