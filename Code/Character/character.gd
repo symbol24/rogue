@@ -33,7 +33,7 @@ func move_character(direction:StringName) -> void:
 			pass
 
 	if GM.map_generator != null and GM.map_generator.map.has(new_pos) and GM.map_generator.map[new_pos] != MapGenerator.WALL:
-		if GM.map_generator.map[new_pos] in [MapGenerator.FLOOR, MapGenerator.DOOR, MapGenerator.ENTRANCE, MapGenerator.EXIT]:
+		if GM.map_generator.map[new_pos] in [MapGenerator.FLOOR, MapGenerator.DOOR, MapGenerator.ENTRANCE, MapGenerator.EXIT, MapGenerator.HALLWAY]:
 			_current_location = new_pos
 			global_position = _current_location * 8
 

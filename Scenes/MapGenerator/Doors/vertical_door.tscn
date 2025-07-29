@@ -5,6 +5,6 @@
 [node name="VerticalDoor" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(-4, 4)
+position = Vector2(0, 8)
 tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 4, 0, 2, 0, 0, 0)
 tile_set = ExtResource("1_vqrtt")

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b3xunnc54t7ws"]
+
+[node name="RoomId" type="Label"]
+modulate = Color(1, 1, 1, 0.580392)
+text = "00"
