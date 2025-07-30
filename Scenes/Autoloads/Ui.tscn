@@ -11,6 +11,7 @@ script = ExtResource("1_8svua")
 script = ExtResource("2_ntdin")
 
 [node name="Debug" type="Control" parent="."]
+visible = false
 custom_minimum_size = Vector2(426, 240)
 layout_mode = 3
 anchors_preset = 0
@@ -19,10 +20,10 @@ offset_bottom = 40.0
 
 [node name="RidSignalButton" type="Button" parent="Debug"]
 layout_mode = 0
-offset_left = 581.0
-offset_top = 324.0
-offset_right = 615.0
-offset_bottom = 341.0
+offset_left = 377.0
+offset_top = 210.0
+offset_right = 411.0
+offset_bottom = 227.0
 theme_override_font_sizes/font_size = 6
 text = "generate"
 script = ExtResource("2_py0m3")

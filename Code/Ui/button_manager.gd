@@ -12,5 +12,12 @@ func _manage_button(id:StringName) -> void:
 		&"debug_generate_map":
 			Signals.remove_character.emit()
 			Signals.generate_test_map.emit(MapGenerator.SCREENSIZE)
+		&"main_menu":
+			Signals.toggle_rid_control.emit(&"main_menu", true, &"")
+		&"character_select":
+			Signals.toggle_rid_control.emit(&"character_select", true, &"main_menu")
+		&"character_selected":
+			Signals.toggle_rid_control.emit(&"character_select", false, &"character_select")
+			Signals.load_scene.emit(&"biome01", true, true)
 		_:
 			pass

@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://dshqh8pnjd3uy"]
+
+[ext_resource type="Script" uid="uid://crgs6gn5qebyv" path="res://Code/Ui/main_menu_ui.gd" id="1_ptmfl"]
+[ext_resource type="Script" uid="uid://cyo3fc3ouga8v" path="res://Code/Ui/Wrappers/rid_signal_button.gd" id="2_d4tip"]
+
+[node name="MainMenuUi" type="Control"]
+custom_minimum_size = Vector2(426, 240)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ptmfl")
+id = &"main_menu"
+metadata/_custom_type_script = "uid://b0u8rggwq2hy5"
+
+[node name="background" type="Panel" parent="."]
+custom_minimum_size = Vector2(428, 242)
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 427.0
+offset_bottom = 241.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(426, 240)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="title" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_type_variation = &"MMTitle"
+text = "ROGUE CLONE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="spacer" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+
+[node name="menu" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="ridsb_play" type="Button" parent="VBoxContainer/HBoxContainer/menu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "PLAY"
+script = ExtResource("2_d4tip")
+id = &"character_select"
+metadata/_custom_type_script = "uid://cyo3fc3ouga8v"
+
+[node name="ridsb_compendium" type="Button" parent="VBoxContainer/HBoxContainer/menu"]
+layout_mode = 2
+disabled = true
+text = "COMPENDIUM"
+script = ExtResource("2_d4tip")
+id = &"compendium_menu"
+metadata/_custom_type_script = "uid://cyo3fc3ouga8v"
+
+[node name="ridsb_options" type="Button" parent="VBoxContainer/HBoxContainer/menu"]
+layout_mode = 2
+disabled = true
+text = "OPTIONS"
+script = ExtResource("2_d4tip")
+id = &"options_menu"
+metadata/_custom_type_script = "uid://cyo3fc3ouga8v"
+
+[node name="ridsb_credits" type="Button" parent="VBoxContainer/HBoxContainer/menu"]
+layout_mode = 2
+disabled = true
+text = "CREDITS"
+script = ExtResource("2_d4tip")
+id = &"credits"
+metadata/_custom_type_script = "uid://cyo3fc3ouga8v"
+
+[node name="spacer2" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+
+[node name="spacer" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2

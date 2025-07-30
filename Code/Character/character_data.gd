@@ -23,6 +23,13 @@ var max_mp:int
 var magical_power:int
 var lives:int
 
+# Inventory
+
+
+# Biome
+var biome:Biome.Identity
+var biome_level := 0
+
 
 func setup_character_data() -> void:
 	level = 1
@@ -34,3 +41,12 @@ func setup_character_data() -> void:
 	max_mp = starting_mp
 	magical_power = starting_magical_power
 	lives = starting_lives
+	biome = Biome.Identity.FIRST
+	biome_level = 0
+
+
+func go_to_next_biome_level() -> void:
+	biome_level += 1
+	if biome_level > SceneLoader.current_level.level_count:
+		biome += 1
+		biome_level = 0

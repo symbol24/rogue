@@ -13,4 +13,3 @@ tile_set = ExtResource("1_vwk55")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(4, 4)
-enabled = false

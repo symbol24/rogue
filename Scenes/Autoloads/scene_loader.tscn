@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://blcm387x60bne"]
+
+[ext_resource type="Script" uid="uid://blir5lwlq4cks" path="res://Code/Autoloads/scene_loader.gd" id="1_jntdt"]
+
+[node name="SceneLoader" type="Node"]
+script = ExtResource("1_jntdt")
+scenes_lo_load = Dictionary[StringName, String]({
+&"biome01": "uid://62c4uqyg5q7m",
+&"main_menu_2d": "uid://dvcqov5wxeka2",
+&"test_scene": "uid://dp8sp7nb45muh"
+})

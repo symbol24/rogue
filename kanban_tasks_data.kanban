@@ -21,10 +21,11 @@
 			"uuid": "662d3979-8c01-472a-8083-61dbf897f65b",
 			"title": "Todo",
 			"tasks": [
-				"8459a269-c839-4329-b304-9140b771ba37",
 				"07d6e1d2-d643-40f5-a121-de6f65d80d8e",
 				"ff334855-7a44-43bd-ba09-e3bc26f2576f",
-				"13dd907e-a267-47f3-8466-3d6ff03d9013"
+				"13dd907e-a267-47f3-8466-3d6ff03d9013",
+				"24cc981a-8c88-42b7-9785-c2aa67156543",
+				"90a95cae-14e9-4fc6-9e8c-345d586be2b1"
 			]
 		},
 		{
@@ -37,7 +38,10 @@
 			"title": "Done",
 			"tasks": [
 				"47622ae2-4916-4293-a2e6-9614a29ebf46",
-				"a36e7df0-18a4-4474-993d-359c2aed3596"
+				"a36e7df0-18a4-4474-993d-359c2aed3596",
+				"8459a269-c839-4329-b304-9140b771ba37",
+				"821014b4-54cf-434a-b0a8-5c3975181479",
+				"3a10c8e0-b06a-42eb-89f6-2aaf6143b888"
 			]
 		}
 	],
@@ -81,6 +85,34 @@
 			"uuid": "13dd907e-a267-47f3-8466-3d6ff03d9013",
 			"title": "basic enemy",
 			"description": "",
+			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
+			"steps": []
+		},
+		{
+			"uuid": "24cc981a-8c88-42b7-9785-c2aa67156543",
+			"title": "attack and damage",
+			"description": "",
+			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
+			"steps": []
+		},
+		{
+			"uuid": "821014b4-54cf-434a-b0a8-5c3975181479",
+			"title": "basic flow",
+			"description": "",
+			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
+			"steps": []
+		},
+		{
+			"uuid": "90a95cae-14e9-4fc6-9e8c-345d586be2b1",
+			"title": "fix map edge case",
+			"description": "some maps generated have unconnected rooms. These rooms are in postions that are not straight lines from other rooms and require L checking. How do we do this properly?",
+			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
+			"steps": []
+		},
+		{
+			"uuid": "3a10c8e0-b06a-42eb-89f6-2aaf6143b888",
+			"title": "Level system and biome seperation",
+			"description": "create a level system that tracks what level in a biome the player is.\n\n\nbiomes are sections of the \"dungeon\" that are visually distinct from other sections.\nbiomes contain their own enemies\n",
 			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
 			"steps": []
 		}

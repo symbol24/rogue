@@ -36,6 +36,7 @@ var rooms:Array[RoomData] = []
 
 func _ready() -> void:
 	Signals.generate_test_map.connect(_make_map)
+	Signals.generate_map.connect(_make_map)
 
 
 func _make_map(dimensions: Vector2i) -> void:
@@ -215,13 +216,12 @@ func _display_rooms() -> void:
 				y += 1
 			x += 1
 
-	for room in rooms:
-		var new_label:Label = DEBUGROOMLABEL.instantiate()
-		add_child(new_label)
-		new_label.global_position = Vector2((room.first_cell.x*8)+9, (room.first_cell.y*8)+8)
-		new_label.text = str(room.id)
-	
-	
+	#for room in rooms:
+		#var new_label:Label = DEBUGROOMLABEL.instantiate()
+		#add_child(new_label)
+		#new_label.global_position = Vector2((room.first_cell.x*8)+9, (room.first_cell.y*8)+8)
+		#new_label.text = str(room.id)
+
 	tile_map_layer.set_cells_terrain_connect(all_cells, 0, 0)
 
 
@@ -244,7 +244,7 @@ func _set_entrance_and_exit() -> void:
 
 func _make_doors() -> void:
 	for room in rooms:
-		print("ROOM ID: ",room.id)
+		#print("ROOM ID: ",room.id)
 		for wall in room.connecting_rooms.keys():
 			var door_pos := Vector2i.ZERO
 			var x_split:int = ((room.last_cell.x) - (room.first_cell.x))/room.connecting_rooms[wall].size()
@@ -252,8 +252,8 @@ func _make_doors() -> void:
 			var x:int = 0
 			var y: int = 0
 			var i := 0
-			print("WALL: ", wall)
-			print("Connection: ", room.connecting_rooms[wall])
+			#print("WALL: ", wall)
+			#print("Connection: ", room.connecting_rooms[wall])
 			for each in room.connecting_rooms[wall]:
 				x = randi_range(room.first_cell.x + (x_split * i), room.first_cell.x + (x_split * (i+1)))
 				if x == room.first_cell.x: x += 1
@@ -273,13 +273,14 @@ func _make_doors() -> void:
 					_:
 						pass
 				i += 1
-		
+
 				tile_map_layer.set_cell(door_pos, 0, HORDOOR)
 				map[door_pos] = DOOR
 				room.add_door(wall, door_pos, each)
 
 
 func _check_connections(sections:Array[Array]) -> void:
+	#print(sections)
 	for column in sections.size():
 		for row in sections[column].size():
 			if sections[column][row] != null:
@@ -293,14 +294,14 @@ func _check_connections(sections:Array[Array]) -> void:
 							if sections[column+2][row] != sections[column][row]:
 								_get_room_by_id(sections[column][row]).add_connection(&"down", sections[column+2][row], Vector2i(column, row), Vector2i(column+2, row))
 								_get_room_by_id(sections[column+2][row]).add_connection(&"up", sections[column][row], Vector2i(column+2, row), Vector2i(column, row))
-						elif sections[column+2][row] == null and sections[column+2][row+1] != null:
-							_get_room_by_id(sections[column][row]).add_connection(&"down", sections[column+2][row], Vector2i(column, row), Vector2i(column+2, row))
-							_get_room_by_id(sections[column+2][row]).add_connection(&"up", sections[column][row], Vector2i(column+2, row), Vector2i(column, row))
+						elif row < 2 and sections[column+2][row] == null and sections[column+2][row+1] != null:
+							_get_room_by_id(sections[column][row]).add_connection(&"down", sections[column+2][row+1], Vector2i(column, row), Vector2i(column+2, row+1))
+							_get_room_by_id(sections[column+2][row+1]).add_connection(&"up", sections[column][row], Vector2i(column+2, row+1), Vector2i(column, row))
 				if column == 1:
 					if sections[column+1][row] != null and sections[column+1][row] != sections[column][row]:
 						_get_room_by_id(sections[column][row]).add_connection(&"down", sections[column+1][row], Vector2i(column, row), Vector2i(column+1, row))
 						_get_room_by_id(sections[column+1][row]).add_connection(&"up", sections[column][row], Vector2i(column+1, row), Vector2i(column, row))
-				
+
 				if row == 0:
 					if sections[column][row+1] != null:
 						if sections[column][row+1] != sections[column][row]:
@@ -313,8 +314,6 @@ func _check_connections(sections:Array[Array]) -> void:
 					if sections[column][row+1] != null and sections[column][row+1] != sections[column][row]:
 						_get_room_by_id(sections[column][row]).add_connection(&"right", sections[column][row+1], Vector2i(column, row), Vector2i(column, row+1))
 						_get_room_by_id(sections[column][row+1]).add_connection(&"left", sections[column][row], Vector2i(column, row+1), Vector2i(column, row))
-				
-				
 
 
 func _get_room_by_id(id:int) -> RoomData:
@@ -338,10 +337,10 @@ func _make_hallways() -> void:
 				var door2 = con_room.get_door_by_connection(room.id)
 				var pos2:Vector2i = door2[0] if not door2.is_empty() else Vector2i.ZERO
 				if pos2 != Vector2i.ZERO: room.add_hallway(pos1, pos2)
-				
+
 				var corner1:Vector2i
 				var corner2:Vector2i
-				
+
 				match wall:
 					&"down":
 						var y:int = randi_range(pos1.y+1, pos2.y-1)
@@ -360,12 +359,12 @@ func _make_hallways() -> void:
 						for i in corner1.y - pos1.y:
 							current.y += 1
 							all_cells.append(current)
-						
+
 						var distance:int = pos2.x - corner1.x if pos2.x >= corner1.x else corner1.x - pos2.x
 						for i in distance:
 							current.x = current.x + 1 if pos2.x >= corner1.x else current.x -1
 							all_cells.append(current)
-						
+
 						for i in pos2.y - corner2.y - 1:
 							current.y += 1
 							all_cells.append(current)
@@ -398,7 +397,7 @@ func _make_hallways() -> void:
 							all_cells.append(current)
 					_:
 						pass
-	
+
 	for each in all_cells:
 		map[each] = HALLWAY
 		tile_map_layer.set_cell(each, 0, Vector2i(1, 1))

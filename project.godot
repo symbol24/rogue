@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RogueClone"
-run/main_scene="uid://dp8sp7nb45muh"
+run/main_scene="uid://221y80u8xri3"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -21,15 +21,18 @@ Signals="*res://Code/Autoloads/signals.gd"
 InputManager="*res://Code/Autoloads/input_manager.gd"
 GM="*res://Scenes/Autoloads/game_manager.tscn"
 UI="*res://Scenes/Autoloads/Ui.tscn"
+SceneLoader="*res://Scenes/Autoloads/scene_loader.tscn"
+Data="*res://Scenes/Autoloads/data_manager.tscn"
 
 [debug]
 
 gdscript/warnings/unused_signal=0
+gdscript/warnings/integer_division=0
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
+window/size/viewport_width=426
+window/size/viewport_height=240
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
@@ -38,7 +41,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdgdtoolkit/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg")
+enabled=PackedStringArray("res://addons/kanban_tasks/plugin.cfg")
 
 [file_customization]
 
@@ -46,12 +49,18 @@ folder_colors={
 "res://Code/": "yellow",
 "res://Data/": "purple",
 "res://Scenes/": "red",
-"res://Textures/": "green"
+"res://Textures/": "green",
+"res://addons/": "blue"
 }
 
 [global_group]
 
 map_generator=""
+spawn_manager=""
+
+[gui]
+
+theme/custom="uid://c5fpycmiy1fa5"
 
 [input]
 

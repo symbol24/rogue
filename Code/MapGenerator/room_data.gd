@@ -23,7 +23,7 @@ var doors:Dictionary = {}
 var hallways:Array[Array] = []
 
 
-func add_connection(wall:StringName, room_id:int, origin_section:Vector2i, target_section:Vector2i) -> void:
+func add_connection(wall:StringName, room_id:int, _origin_section:Vector2i, target_section:Vector2i) -> void:
 	if connecting_rooms.has(wall):
 		if not connecting_rooms[wall].has(room_id):
 			connecting_rooms[wall][room_id] = target_section

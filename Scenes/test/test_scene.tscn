@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp8sp7nb45muh"]
+[gd_scene load_steps=5 format=3 uid="uid://dp8sp7nb45muh"]
 
 [ext_resource type="PackedScene" uid="uid://dsek53jrmkie1" path="res://Scenes/MapGenerator/map_generator.tscn" id="1_50nde"]
 [ext_resource type="Script" uid="uid://cu3yamlitswv0" path="res://Code/test/test_scene.gd" id="1_dmr31"]
 [ext_resource type="TileSet" uid="uid://cq5vem7f4wkgs" path="res://Data/TileSets/main_tileset.tres" id="2_dmr31"]
 [ext_resource type="PackedScene" uid="uid://driuutwgax18s" path="res://Scenes/Utilities/Managers/spawn_manager.tscn" id="4_5a2vh"]
-[ext_resource type="Script" uid="uid://fqu8ykwtpjxy" path="res://Code/Utilities/Managers/spawn_manager.gd" id="5_dd7w7"]
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource("1_dmr31")
@@ -16,14 +15,3 @@ tile_set = ExtResource("2_dmr31")
 tile_map_layer = NodePath("../layer")
 
 [node name="SpawnManager" parent="." instance=ExtResource("4_5a2vh")]
-script = ExtResource("5_dd7w7")
-
-[node name="generate_rooms" type="Button" parent="."]
-unique_name_in_owner = true
-visible = false
-offset_left = 285.0
-offset_top = 158.0
-offset_right = 311.0
-offset_bottom = 173.0
-theme_override_font_sizes/font_size = 4
-text = "generate"

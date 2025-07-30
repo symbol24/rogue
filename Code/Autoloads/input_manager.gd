@@ -21,7 +21,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS
+	process_mode = PROCESS_MODE_ALWAYS
 	_process_inputs = true
 
 

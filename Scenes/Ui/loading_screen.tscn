@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://id3iht3nckov"]
+
+[ext_resource type="Script" uid="uid://c34xxj87t8rne" path="res://Code/Ui/loading_screen.gd" id="1_ygfqe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2v55"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+
+[node name="LoadingScreen" type="Control"]
+custom_minimum_size = Vector2(426, 240)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ygfqe")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(426, 240)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i2v55")
+
+[node name="loading_label" type="Label" parent="Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 25)
+layout_mode = 0
+offset_left = 22.0
+offset_top = 195.0
+offset_right = 92.0
+offset_bottom = 220.0
+text = "Loading"
+horizontal_alignment = 1
