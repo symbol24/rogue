@@ -5,6 +5,3 @@
 [node name="MapGenerator" type="Node" groups=["map_generator"]]
 script = ExtResource("1_iruqi")
 metadata/_custom_type_script = "uid://bmdcp05lffaxw"
-
-[node name="rooms" type="Node2D" parent="."]
-unique_name_in_owner = true

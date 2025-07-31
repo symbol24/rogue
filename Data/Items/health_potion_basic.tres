@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://bhww6rxf0vd7l"]
+
+[ext_resource type="Script" uid="uid://5rygxwmuws5i" path="res://Code/Items/item_data.gd" id="1_4k2q7"]
+
+[resource]
+script = ExtResource("1_4k2q7")
+id = &"health_potion_basic"
+atlas_coords = Vector2i(7, 8)
+count = 1
+type = 1
+unknown_description = "A small red potion."
+known_description = "A potion that restores a small amount of health."
+metadata/_custom_type_script = "uid://5rygxwmuws5i"

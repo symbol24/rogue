@@ -33,9 +33,21 @@ func move_character(direction:StringName) -> void:
 			pass
 
 	if GM.map_generator != null and GM.map_generator.map.has(new_pos) and GM.map_generator.map[new_pos] != MapGenerator.WALL:
-		if GM.map_generator.map[new_pos] in [MapGenerator.FLOOR, MapGenerator.DOOR, MapGenerator.ENTRANCE, MapGenerator.EXIT, MapGenerator.HALLWAY]:
+		if GM.map_generator.map[new_pos] in [MapGenerator.FLOOR, MapGenerator.DOOR, MapGenerator.ENTRANCE, MapGenerator.EXIT, MapGenerator.HALLWAY, MapGenerator.ITEM]:
 			_current_location = new_pos
 			global_position = _current_location * 8
+
+			if GM.map_generator.map[_current_location] == MapGenerator.ITEM:
+				_pickup_item(_current_location)
+
+
+func interact() -> void:
+	if GM.map_generator != null and GM.map_generator.map.has(_current_location):
+		if GM.map_generator.map[_current_location] == MapGenerator.ENTRANCE:
+			print("This is the entrance, you cannot go back up!")
+		elif GM.map_generator.map[_current_location] == MapGenerator.EXIT:
+			data.go_to_next_biome_level()
+			Signals.load_scene.emit(Biome.Identity.keys()[data.biome], true, true)
 
 
 func unregister_input() -> void:
@@ -58,3 +70,10 @@ func _input_focus_changed() -> void:
 
 func _exit_tree() -> void:
 	_input.unregister()
+
+
+func _pickup_item(coords:Vector2i) -> void:
+	var new_item:ItemData = GM.spawn_manager.get_item_by_coords(coords)
+	if new_item != null:
+		data.pickup(new_item)
+		Signals.remove_item.emit(new_item)

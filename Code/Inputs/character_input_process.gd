@@ -11,6 +11,8 @@ func process_input(_delta:float, event:InputEvent) -> void:
 	if event == null: return
 	if event.is_action_released(&"up") or event.is_action_released(&"down") or event.is_action_released(&"left") or event.is_action_released(&"right"):
 		_move(event)
+	elif event.is_action_released(&"interact"):
+		_character.interact()
 
 
 func _move(event:InputEvent) -> void:

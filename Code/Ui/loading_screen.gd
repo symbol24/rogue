@@ -1,7 +1,7 @@
 class_name LoadingScreen extends Control
 
 
-const TIME := 0.25
+const TIME := 0.5
 
 
 @onready var loading_label: Label = %loading_label
@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 			pos += 1
 			if pos > max_char-1: pos = 0
 			loading_label.visible_characters = pos
+			timer = 0.0
 
 
 func _on_hide() -> void:

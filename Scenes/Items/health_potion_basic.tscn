@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5hreafg7mlhi"]
+
+[ext_resource type="Script" uid="uid://b2ws70wjfs44d" path="res://Code/Items/item.gd" id="1_cset5"]
+[ext_resource type="TileSet" uid="uid://bss5ykfhj5wws" path="res://Data/TileSets/item_tilest.tres" id="2_2r31s"]
+
+[node name="HealthPotionBasic" type="Node2D"]
+script = ExtResource("1_cset5")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 8, 0, 0, 0)
+tile_set = ExtResource("2_2r31s")

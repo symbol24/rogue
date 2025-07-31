@@ -18,6 +18,6 @@ func _manage_button(id:StringName) -> void:
 			Signals.toggle_rid_control.emit(&"character_select", true, &"main_menu")
 		&"character_selected":
 			Signals.toggle_rid_control.emit(&"character_select", false, &"character_select")
-			Signals.load_scene.emit(&"biome01", true, true)
+			Signals.load_scene.emit(&"FIRST", true, true)
 		_:
 			pass

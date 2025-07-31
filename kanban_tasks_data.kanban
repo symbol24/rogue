@@ -21,17 +21,19 @@
 			"uuid": "662d3979-8c01-472a-8083-61dbf897f65b",
 			"title": "Todo",
 			"tasks": [
-				"07d6e1d2-d643-40f5-a121-de6f65d80d8e",
-				"ff334855-7a44-43bd-ba09-e3bc26f2576f",
 				"13dd907e-a267-47f3-8466-3d6ff03d9013",
 				"24cc981a-8c88-42b7-9785-c2aa67156543",
-				"90a95cae-14e9-4fc6-9e8c-345d586be2b1"
+				"90a95cae-14e9-4fc6-9e8c-345d586be2b1",
+				"d37c2c72-7ebc-4bb2-9b50-86258e4b587b"
 			]
 		},
 		{
 			"uuid": "684ec729-a60c-473f-846f-f7ef8ba7e33d",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"ff334855-7a44-43bd-ba09-e3bc26f2576f",
+				"07d6e1d2-d643-40f5-a121-de6f65d80d8e"
+			]
 		},
 		{
 			"uuid": "569e7ba7-fc4a-40d8-aa71-b27deb548ee0",
@@ -113,6 +115,13 @@
 			"uuid": "3a10c8e0-b06a-42eb-89f6-2aaf6143b888",
 			"title": "Level system and biome seperation",
 			"description": "create a level system that tracks what level in a biome the player is.\n\n\nbiomes are sections of the \"dungeon\" that are visually distinct from other sections.\nbiomes contain their own enemies\n",
+			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
+			"steps": []
+		},
+		{
+			"uuid": "d37c2c72-7ebc-4bb2-9b50-86258e4b587b",
+			"title": "isomething else",
+			"description": "",
 			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
 			"steps": []
 		}

@@ -2,7 +2,7 @@ class_name MapGenerator extends Node
 
 
 enum {MERGED_EAST, MERGED_SOUTH}
-enum {WALL, FLOOR, DOOR, ENTRANCE, EXIT, HALLWAY}
+enum {WALL, FLOOR, DOOR, ENTRANCE, EXIT, HALLWAY, ENEMY, ITEM}
 
 
 const ROOMIDS:Array[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8]
@@ -25,6 +25,7 @@ const DEBUGROOMLABEL := preload("uid://b3xunnc54t7ws")
 @export var proportions: Array[float] = [0.9, 1.0, 1.1]
 @export var merge_chances: Array[float] = [1.0, 0.8, 0.4, 0.2, 0.0]
 @export var tile_map_layer:TileMapLayer
+@export var item_layer:TileMapLayer
 
 var slices_through_x: Array[int]
 var slices_through_y: Array[int]
@@ -37,6 +38,8 @@ var rooms:Array[RoomData] = []
 func _ready() -> void:
 	Signals.generate_test_map.connect(_make_map)
 	Signals.generate_map.connect(_make_map)
+	Signals.remove_item.connect(_remove_item)
+	Signals.set_items.connect(_set_items)
 
 
 func _make_map(dimensions: Vector2i) -> void:
@@ -444,3 +447,42 @@ func _is_path_valid(pos1:Vector2i, corner1:Vector2i, corner2:Vector2i, pos2:Vect
 			pass
 
 	return true
+
+
+func _get_only_floor() -> Dictionary[Vector2i, int]:
+	var result:Dictionary[Vector2i, int] = {}
+	for key in map.keys():
+		if map[key] == FLOOR: result[key] = FLOOR
+	return result
+
+
+func _get_map_for_type(type:int) -> Dictionary[Vector2i, int]:
+	var result:Dictionary[Vector2i, int] = {}
+	for key in map.keys():
+		if map[key] == type: result[key] = type
+	return result
+
+
+func _set_items(items:Array[ItemData]) -> void:
+	var _floor := _get_only_floor()
+	var keys := _floor.keys()
+	for each in items:
+		var choice := -1
+		while choice == -1:
+			choice = randi_range(0, _floor.size()-1)
+			if _floor[keys[choice]] != FLOOR: choice = -1
+		
+		_floor[keys[choice]] = ITEM
+		map[keys[choice]] = ITEM
+		
+		each.coords = keys[choice]
+		item_layer.set_cell(each.coords, 0, each.atlas_coords)
+
+
+func _remove_item(item_data:ItemData) -> void:
+	print(_get_map_for_type(ITEM))
+	
+	map[item_data.coords] = FLOOR
+	item_layer.erase_cell(item_data.coords)
+	
+	print(_get_map_for_type(ITEM))

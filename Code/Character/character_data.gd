@@ -24,7 +24,9 @@ var magical_power:int
 var lives:int
 
 # Inventory
-
+var inventory:Array[ItemData] = []
+var known_items:Dictionary = {}
+var coins:int
 
 # Biome
 var biome:Biome.Identity
@@ -43,10 +45,31 @@ func setup_character_data() -> void:
 	lives = starting_lives
 	biome = Biome.Identity.FIRST
 	biome_level = 0
+	coins = 0
 
 
 func go_to_next_biome_level() -> void:
 	biome_level += 1
 	if biome_level > SceneLoader.current_level.level_count:
-		biome += 1
+		var i = biome as int
+		i += 1
+		biome  = i as Biome.Identity
 		biome_level = 0
+
+
+func add_item_to_known(_id:StringName) -> void:
+	known_items[_id] = true
+
+
+func pickup(item:ItemData) -> void:
+	if item.type == ItemData.Type.COINS: coins += item.get_count()
+	else: inventory.append(item.duplicate())
+	
+	print("------")
+	print("Coins: ", coins)
+	print("Inventory:")
+	if inventory.is_empty(): print("Empty")
+	else:
+		for each in inventory:
+			print(each.get_description(known_items))
+	print("------")
