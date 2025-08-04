@@ -12,6 +12,7 @@
 [node name="Biome01" type="Node2D"]
 script = ExtResource("1_876x6")
 loot_table = Array[ExtResource("2_2g0dp")]([ExtResource("3_jbl7f"), ExtResource("4_jbl7f")])
+item_bonus_count = 0
 
 [node name="ground" type="TileMapLayer" parent="."]
 tile_set = ExtResource("2_2q4st")

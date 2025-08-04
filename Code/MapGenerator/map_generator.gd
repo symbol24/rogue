@@ -480,9 +480,5 @@ func _set_items(items:Array[ItemData]) -> void:
 
 
 func _remove_item(item_data:ItemData) -> void:
-	print(_get_map_for_type(ITEM))
-	
 	map[item_data.coords] = FLOOR
 	item_layer.erase_cell(item_data.coords)
-	
-	print(_get_map_for_type(ITEM))

@@ -44,8 +44,8 @@ func _spawn_items() -> void:
 		push_warning("Biome has no items in loot table.")
 		return
 
-	var count := randi_range(1, GM.map_generator.rooms.size())
+	var count := randi_range(1 + SceneLoader.current_level.item_bonus_count, GM.map_generator.rooms.size() + SceneLoader.current_level.item_bonus_count)
 	for i in count:
-		items.append(biome.loot_table.pick_random())
+		items.append(biome.loot_table.pick_random().duplicate())
 
 	Signals.set_items.emit(items)

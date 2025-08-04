@@ -7,6 +7,7 @@ enum Identity {FIRST, SECOND, THIRD, FOURTH, FIFTH, SIXTH, SEVENTH, EIGHT, NINTH
 @export var biome:Identity
 @export var level_count := 5
 @export var loot_table:Array[ItemData] = []
+@export var item_bonus_count := 1
 
 
 func _ready() -> void:
