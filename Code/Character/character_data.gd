@@ -2,6 +2,7 @@ class_name CharacterData extends Resource
 
 
 @export var id := &""
+@export var uid := ""
 
 # Stats
 @export var starting_hp := 10
@@ -46,6 +47,8 @@ func setup_character_data() -> void:
 	biome = Biome.Identity.FIRST
 	biome_level = 0
 	coins = 0
+	inventory.clear()
+	known_items.clear()
 
 
 func go_to_next_biome_level() -> void:
@@ -62,6 +65,7 @@ func add_item_to_known(_id:StringName) -> void:
 
 
 func pickup(item:ItemData) -> void:
+	print("Item type on pickup: ", ItemData.Type.keys()[item.type])
 	if item.type == ItemData.Type.COINS: coins += item.get_count()
 	else: inventory.append(item.duplicate())
 	

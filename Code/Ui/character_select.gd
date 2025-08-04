@@ -8,5 +8,6 @@ func toggle_rid_control(display:bool) -> void:
 	if display:
 		ridsb_select_character.grab_focus()
 		show()
+		GM.set_active_character_data(Data.DEBUGCHARACTERDATA)
 	else:
 		hide()

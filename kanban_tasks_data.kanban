@@ -23,14 +23,15 @@
 			"tasks": [
 				"13dd907e-a267-47f3-8466-3d6ff03d9013",
 				"24cc981a-8c88-42b7-9785-c2aa67156543",
-				"90a95cae-14e9-4fc6-9e8c-345d586be2b1",
-				"d37c2c72-7ebc-4bb2-9b50-86258e4b587b"
+				"90a95cae-14e9-4fc6-9e8c-345d586be2b1"
 			]
 		},
 		{
 			"uuid": "684ec729-a60c-473f-846f-f7ef8ba7e33d",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"d37c2c72-7ebc-4bb2-9b50-86258e4b587b"
+			]
 		},
 		{
 			"uuid": "569e7ba7-fc4a-40d8-aa71-b27deb548ee0",
@@ -119,7 +120,7 @@
 		},
 		{
 			"uuid": "d37c2c72-7ebc-4bb2-9b50-86258e4b587b",
-			"title": "isomething else",
+			"title": "fix not saving character between levels",
 			"description": "",
 			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
 			"steps": []

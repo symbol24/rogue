@@ -1,6 +1,10 @@
 class_name DataManager extends Node
 
 
+const DEBUGCHARACTER := preload("uid://cpjhs0lqsgyex")
+const DEBUGCHARACTERDATA := preload("uid://chk34etf450ov")
+
+
 signal save_complete
 signal load_complete
 

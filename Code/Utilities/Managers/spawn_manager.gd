@@ -1,10 +1,6 @@
 class_name SpawnManager extends Node
 
 
-const DEBUGCHARACTER := preload("uid://cpjhs0lqsgyex")
-const DEBUGCHARACTERDATA := preload("uid://bq683wyy7cl23")
-
-
 var active_character:Character
 var biome:Biome = null:
 	get:
@@ -26,11 +22,11 @@ func get_item_by_coords(coords:Vector2i) -> ItemData:
 
 
 func _spawn_character() -> void:
-	active_character = DEBUGCHARACTER.instantiate()
+	active_character = load(GM.run_selected_character.uid).instantiate()
 	add_child(active_character)
 	if not active_character.is_node_ready(): await active_character.ready
 	active_character.global_position = GM.map_generator.entrance*8
-	active_character.setup_character(DEBUGCHARACTERDATA, GM.map_generator.entrance)
+	active_character.setup_character(GM.map_generator.entrance)
 
 
 func _remove_character() -> void:
