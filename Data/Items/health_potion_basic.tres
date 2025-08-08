@@ -1,13 +1,18 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://bhww6rxf0vd7l"]
+[gd_resource type="Resource" script_class="ConsumableData" load_steps=3 format=3 uid="uid://cbqru876vup2t"]
 
-[ext_resource type="Script" uid="uid://5rygxwmuws5i" path="res://Code/Items/item_data.gd" id="1_4k2q7"]
+[ext_resource type="Script" uid="uid://sy0ror66cxbe" path="res://Code/Items/consumable_data.gd" id="1_4k2q7"]
+[ext_resource type="Resource" uid="uid://dc8yiyjmksmlt" path="res://Data/Effects/health_potion_basic_effect_data.tres" id="1_etrss"]
 
 [resource]
 script = ExtResource("1_4k2q7")
+consumable_effect_uid = "uid://bt2dkma573tcc"
+consume_count = 1
+effect_data = ExtResource("1_etrss")
+consume_message = "Consumed a potion that heals for a small amount of HP."
 id = &"health_potion_basic"
 atlas_coords = Vector2i(7, 8)
 count = 1
 type = 1
-unknown_description = "A small red potion."
+unknown_description = "A small red potion. Swirling with glitter."
 known_description = "A potion that restores a small amount of health."
-metadata/_custom_type_script = "uid://5rygxwmuws5i"
+metadata/_custom_type_script = "uid://sy0ror66cxbe"

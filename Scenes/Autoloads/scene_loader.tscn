@@ -4,8 +4,8 @@
 
 [node name="SceneLoader" type="Node"]
 script = ExtResource("1_jntdt")
-scenes_lo_load = Dictionary[StringName, String]({
+scenes_lo_load = {
 &"FIRST": "uid://62c4uqyg5q7m",
 &"main_menu_2d": "uid://dvcqov5wxeka2",
 &"test_scene": "uid://dp8sp7nb45muh"
-})
+}

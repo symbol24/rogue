@@ -1,17 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://62c4uqyg5q7m"]
+[gd_scene load_steps=8 format=3 uid="uid://62c4uqyg5q7m"]
 
 [ext_resource type="Script" uid="uid://cl7nspbommb6c" path="res://Code/Utilities/biome.gd" id="1_876x6"]
 [ext_resource type="Script" uid="uid://5rygxwmuws5i" path="res://Code/Items/item_data.gd" id="2_2g0dp"]
 [ext_resource type="TileSet" uid="uid://cq5vem7f4wkgs" path="res://Data/TileSets/main_tileset.tres" id="2_2q4st"]
 [ext_resource type="PackedScene" uid="uid://dsek53jrmkie1" path="res://Scenes/MapGenerator/map_generator.tscn" id="3_5qj7j"]
 [ext_resource type="TileSet" uid="uid://bss5ykfhj5wws" path="res://Data/TileSets/item_tilest.tres" id="3_hl1a2"]
-[ext_resource type="Resource" uid="uid://bhww6rxf0vd7l" path="res://Data/Items/health_potion_basic.tres" id="3_jbl7f"]
+[ext_resource type="Resource" uid="uid://cbqru876vup2t" path="res://Data/Items/health_potion_basic.tres" id="3_jbl7f"]
 [ext_resource type="PackedScene" uid="uid://driuutwgax18s" path="res://Scenes/Utilities/Managers/spawn_manager.tscn" id="4_hl1a2"]
-[ext_resource type="Resource" uid="uid://cuqrnnmqg7tux" path="res://Data/Items/coins_biome01.tres" id="4_jbl7f"]
 
 [node name="Biome01" type="Node2D"]
 script = ExtResource("1_876x6")
-loot_table = Array[ExtResource("2_2g0dp")]([ExtResource("3_jbl7f"), ExtResource("4_jbl7f")])
+loot_table = Array[ExtResource("2_2g0dp")]([ExtResource("3_jbl7f")])
 item_bonus_count = 0
 
 [node name="ground" type="TileMapLayer" parent="."]

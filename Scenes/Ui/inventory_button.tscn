@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1sfqlpk6f4np"]
+
+[ext_resource type="Script" uid="uid://8rvidxgfv3av" path="res://Code/Ui/inventory_button.gd" id="1_cl61o"]
+
+[node name="InventoryButton" type="Button"]
+focus_mode = 1
+alignment = 0
+script = ExtResource("1_cl61o")

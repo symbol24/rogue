@@ -4,7 +4,7 @@ class_name SceneManager extends Node
 const EXTRA_TIME := 2.0
 
 
-@export var scenes_lo_load:Dictionary[StringName, String] = {}
+@export var scenes_lo_load:Dictionary = {}
 
 var current_level:Node2D = null
 var _to_load := &""
@@ -60,4 +60,5 @@ func _complete_load() -> void:
 	if not current_level.is_node_ready(): await current_level.ready
 	if _extra_time: await get_tree().create_timer(EXTRA_TIME).timeout
 	get_tree().paused = false
+	if current_level is Biome: Signals.toggle_rid_control.emit(&"in_game_ui", true, &"")
 	Signals.toggle_loading_screen.emit(false)

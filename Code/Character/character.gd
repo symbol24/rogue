@@ -1,14 +1,15 @@
 class_name Character extends Node2D
 
 
-#var data:CharacterData
 var _current_location:Vector2i = Vector2i.ZERO
 var _input:InputProcess
 var _ready_sent := false
 
 
+
 func _ready() -> void:
 	Signals.input_focuse_changed.connect(_input_focus_changed)
+	Signals.consume_item.connect(_consume_item)
 
 
 func setup_character(coords:Vector2i) -> void:
@@ -37,14 +38,17 @@ func move_character(direction:StringName) -> void:
 
 			if GM.map_generator.map[_current_location] == MapGenerator.ITEM:
 				_pickup_item(_current_location)
+			
+			Signals.action_taken.emit(self)
 
 
 func interact() -> void:
 	if GM.map_generator != null and GM.map_generator.map.has(_current_location):
 		if GM.map_generator.map[_current_location] == MapGenerator.ENTRANCE:
-			print("This is the entrance, you cannot go back up!")
+			Signals.display_message.emit("This is the entrance, you cannot go back up!")
 		elif GM.map_generator.map[_current_location] == MapGenerator.EXIT:
 			GM.run_selected_character.go_to_next_biome_level()
+			await get_tree().create_timer(0.1).timeout
 			Signals.load_scene.emit(Biome.Identity.keys()[GM.run_selected_character.biome], true, true)
 
 
@@ -73,5 +77,14 @@ func _exit_tree() -> void:
 func _pickup_item(coords:Vector2i) -> void:
 	var new_item:ItemData = GM.spawn_manager.get_item_by_coords(coords)
 	if new_item != null:
+		
 		GM.run_selected_character.pickup(new_item)
 		Signals.remove_item.emit(new_item)
+
+
+func _consume_item(item_data:ConsumableData) -> void:
+	var result = item_data.consume(self)
+	if result <= 0:
+		GM.run_selected_character.remove_item(item_data)
+	Signals.item_consumed.emit(item_data)
+	GM.run_selected_character.add_item_to_known(item_data.id)

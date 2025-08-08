@@ -14,6 +14,10 @@ enum Type {COINS, CONSUMABLE, GEAR}
 var coords := Vector2i.ZERO
 
 
+func setup_item() -> void:
+	pass
+
+
 func get_description(known_ids:Dictionary) -> String:
 	if known_ids.has(id) and known_ids[id] == true:
 		return known_description
@@ -24,3 +28,4 @@ func get_count() -> int:
 	if type == Type.COINS:
 		return randi_range(0+count, 3+count)
 	return count
+

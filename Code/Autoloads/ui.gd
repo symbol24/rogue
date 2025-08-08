@@ -4,6 +4,8 @@ class_name Ui extends CanvasLayer
 const LOADINGSCREEN := "uid://id3iht3nckov"
 const MAINMENU := "uid://dshqh8pnjd3uy"
 const CHARACTERSELECT := "uid://dbuyvt65oinsr"
+const INGAMEUI := "uid://0i3d0oi0i5r3"
+const PAUSEMENU := "uid://cg7sfjeueppk3"
 
 
 var _loading_screen:LoadingScreen = null
@@ -14,6 +16,12 @@ var previous_rid_control := &""
 func _ready() -> void:
 	Signals.toggle_loading_screen.connect(_toggle_loading_screen)
 	Signals.toggle_rid_control.connect(_toggle_rid_controls)
+
+
+func is_displayed_ridControl(id:StringName) -> bool:
+	for each in rid_controls:
+		if each.id == id and each.is_visible(): return true
+	return false
 
 
 func _toggle_rid_controls(_id:StringName, display:bool, previous:StringName = &"") -> void:
@@ -27,7 +35,7 @@ func _toggle_rid_controls(_id:StringName, display:bool, previous:StringName = &"
 
 	if not found:
 		var new:RidControl = _get_ui(_id)
-		new.toggle_rid_control(true)
+		new.toggle_rid_control(display)
 		rid_controls.append(new)
 
 
@@ -49,6 +57,10 @@ func _get_ui(id:StringName) -> Control:
 			result = load(LOADINGSCREEN).instantiate()
 		&"character_select":
 			result = load(CHARACTERSELECT).instantiate()
+		&"in_game_ui":
+			result = load(INGAMEUI).instantiate()
+		&"pause_menu":
+			result = load(PAUSEMENU).instantiate()
 		_:
 			pass
 

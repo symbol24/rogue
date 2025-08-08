@@ -30,7 +30,7 @@ const DEBUGROOMLABEL := preload("uid://b3xunnc54t7ws")
 var slices_through_x: Array[int]
 var slices_through_y: Array[int]
 var next_gen_id := 0
-var map:Dictionary[Vector2i, int] = {}
+var map:Dictionary = {}
 var entrance:Vector2i
 var rooms:Array[RoomData] = []
 
@@ -218,12 +218,6 @@ func _display_rooms() -> void:
 				map[cell] = FLOOR
 				y += 1
 			x += 1
-
-	#for room in rooms:
-		#var new_label:Label = DEBUGROOMLABEL.instantiate()
-		#add_child(new_label)
-		#new_label.global_position = Vector2((room.first_cell.x*8)+9, (room.first_cell.y*8)+8)
-		#new_label.text = str(room.id)
 
 	tile_map_layer.set_cells_terrain_connect(all_cells, 0, 0)
 
@@ -449,15 +443,15 @@ func _is_path_valid(pos1:Vector2i, corner1:Vector2i, corner2:Vector2i, pos2:Vect
 	return true
 
 
-func _get_only_floor() -> Dictionary[Vector2i, int]:
-	var result:Dictionary[Vector2i, int] = {}
+func _get_only_floor() -> Dictionary:
+	var result:Dictionary = {}
 	for key in map.keys():
 		if map[key] == FLOOR: result[key] = FLOOR
 	return result
 
 
-func _get_map_for_type(type:int) -> Dictionary[Vector2i, int]:
-	var result:Dictionary[Vector2i, int] = {}
+func _get_map_for_type(type:int) -> Dictionary:
+	var result:Dictionary = {}
 	for key in map.keys():
 		if map[key] == type: result[key] = type
 	return result
@@ -465,7 +459,10 @@ func _get_map_for_type(type:int) -> Dictionary[Vector2i, int]:
 
 func _set_items(items:Array[ItemData]) -> void:
 	var _floor := _get_only_floor()
+	assert(not _floor.is_empty(), "Floor plan is empty, why?")
 	var keys := _floor.keys()
+	print(keys[0])
+	print("-------")
 	for each in items:
 		var choice := -1
 		while choice == -1:

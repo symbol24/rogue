@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HpEffectData" load_steps=2 format=3 uid="uid://dc8yiyjmksmlt"]
+
+[ext_resource type="Script" uid="uid://bux78ew8rgtmm" path="res://Code/Effects/hp_effect_data.gd" id="1_mvt60"]
+
+[resource]
+script = ExtResource("1_mvt60")
+flat_hp_amount = 0
+percent_hp_amount = 0.4
+effect_uid = ""
+delay_count = 0
+trigger_count = 0
+metadata/_custom_type_script = "uid://bux78ew8rgtmm"

@@ -22,6 +22,7 @@ func _input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
+	Signals.input_change_focus.connect(_toggle_input_focus)
 	_process_inputs = true
 
 
@@ -30,20 +31,31 @@ func _process(delta: float) -> void:
 
 
 func register_process(input_process:InputProcess) -> void:
-	if _input_processes.has(input_process): return
+	_clear_invalid_processes()
+	if _input_processes.has(input_process) or _check_is_already_registered(input_process): return
 	_input_processes.append(input_process)
-	_toggle_focus_on_input_processes()
 
 
 func unregister_input_process(input_process:InputProcess) -> void:
 	if not _input_processes.has(input_process): return
 	_input_processes.append(input_process)
+	_clear_invalid_processes()
 
 
 func _process_input(delta:float) -> void:
 	if not _process_inputs or _input_processes.is_empty(): return
-	if is_instance_valid(_input_processes[-1]):
-		_input_processes[-1].process_input(delta, _input_buffer.pop_front())
+	var event:InputEvent = _input_buffer.pop_front()
+	for each in _input_processes:
+		if is_instance_valid(each):
+			each.process_input(delta, event)
+
+
+func _toggle_input_focus(id:StringName, is_focused:bool) -> void:
+	_clear_invalid_processes()
+	for each in _input_processes:
+		if is_instance_valid(each):
+			if is_focused: each.toggle_focus(false)
+			if each.id == id: each.toggle_focus(is_focused)
 
 
 func _toggle_focus_on_input_processes() -> void:
@@ -74,3 +86,10 @@ func _clear_invalid_processes() -> void:
 
 	for id in ids:
 		_input_processes.erase(null)
+
+
+func _check_is_already_registered(process:InputProcess) -> bool:
+	for each in _input_processes:
+		if is_instance_valid(each):
+			if process.name == each.name: return true
+	return false

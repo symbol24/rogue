@@ -1,0 +1,157 @@
+[gd_scene load_steps=2 format=3 uid="uid://0i3d0oi0i5r3"]
+
+[ext_resource type="Script" uid="uid://b7ktmiw1ktejk" path="res://Code/Ui/in_game_ui.gd" id="1_egdry"]
+
+[node name="InGameUi" type="Control"]
+custom_minimum_size = Vector2(426, 240)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_egdry")
+id = &"in_game_ui"
+metadata/_custom_type_script = "uid://b0u8rggwq2hy5"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(426, 240)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="top_panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="top_hbox" type="HBoxContainer" parent="VBoxContainer/top_panel"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+offset_right = 426.0
+offset_bottom = 30.0
+theme_override_constants/separation = 0
+
+[node name="spacer" type="Control" parent="VBoxContainer/top_panel/top_hbox"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="messages" type="Label" parent="VBoxContainer/top_panel/top_hbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"IGU_Message_Label"
+text = "messages will appear here"
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="spacer2" type="Control" parent="VBoxContainer/top_panel/top_hbox"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="spacer" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="bottom_panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="bottom_hbox" type="HBoxContainer" parent="VBoxContainer/bottom_panel"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+offset_right = 426.0
+theme_override_constants/separation = 3
+
+[node name="spacer" type="Control" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+
+[node name="Label6" type="Label" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"IGU_Stats"
+text = "Level:"
+
+[node name="level_label" type="Label" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"IGU_Stats"
+text = "0/0"
+
+[node name="spacer5" type="Control" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+
+[node name="class_label" type="Label" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"IGU_Stats"
+text = "Adventurer"
+
+[node name="spacer2" type="Control" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"IGU_Stats"
+text = "HP:"
+
+[node name="hp_label" type="Label" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"IGU_Stats"
+text = "0/0"
+
+[node name="spacer3" type="Control" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"IGU_Stats"
+text = "Armor:"
+
+[node name="armor_label" type="Label" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"IGU_Stats"
+text = "0/0"
+
+[node name="spacer4" type="Control" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"IGU_Stats"
+text = "MP:"
+
+[node name="mp_label" type="Label" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"IGU_Stats"
+text = "0/0"
+
+[node name="spacer6" type="Control" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"IGU_Stats"
+text = "EXP:"
+
+[node name="exp_label" type="Label" parent="VBoxContainer/bottom_panel/bottom_hbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"IGU_Stats"
+text = "0/0"

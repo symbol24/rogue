@@ -20,5 +20,7 @@ func _manage_button(id:StringName) -> void:
 			GM.run_selected_character.setup_character_data()
 			Signals.toggle_rid_control.emit(&"character_select", false, &"character_select")
 			Signals.load_scene.emit(&"FIRST", true, true)
+		&"pause_menu_back":
+			Signals.toggle_rid_control.emit(&"in_game_ui", true, &"pause_menu")
 		_:
 			pass

@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg7sfjeueppk3"]
+
+[ext_resource type="Script" uid="uid://dcb7m4q4xf3e" path="res://Code/Ui/pause_menu.gd" id="1_co7dh"]
+[ext_resource type="Script" uid="uid://cyo3fc3ouga8v" path="res://Code/Ui/Wrappers/rid_signal_button.gd" id="2_bejvp"]
+
+[node name="PauseMenu" type="Control"]
+custom_minimum_size = Vector2(426, 240)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_co7dh")
+id = &"pause_menu"
+metadata/_custom_type_script = "uid://b0u8rggwq2hy5"
+
+[node name="background" type="Panel" parent="."]
+custom_minimum_size = Vector2(426, 240)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(426, 240)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="spacer" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="inventory" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="spacer" type="Control" parent="VBoxContainer/inventory"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="inventory_scrollcontainer" type="ScrollContainer" parent="VBoxContainer/inventory"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="inventory_vbox" type="VBoxContainer" parent="VBoxContainer/inventory/inventory_scrollcontainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="spacer2" type="Control" parent="VBoxContainer/inventory"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="bottom" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="spacer" type="Control" parent="VBoxContainer/bottom"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="pause_message" type="Label" parent="VBoxContainer/bottom"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Q to quaff"
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="buttons" type="HBoxContainer" parent="VBoxContainer/bottom"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="ridsb_back" type="Button" parent="VBoxContainer/bottom/buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 1
+text = "Close"
+script = ExtResource("2_bejvp")
+id = &"pause_menu_back"
+metadata/_custom_type_script = "uid://cyo3fc3ouga8v"
+
+[node name="spacer" type="Control" parent="VBoxContainer/bottom/buttons"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="spacer2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2

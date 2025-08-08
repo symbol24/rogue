@@ -7,7 +7,12 @@ var _character:Character = null:
 		return _character
 
 
+func _ready() -> void:
+	id = &"character_input"
+
+
 func process_input(_delta:float, event:InputEvent) -> void:
+	if not has_focus: return
 	if event == null: return
 	if event.is_action_released(&"up") or event.is_action_released(&"down") or event.is_action_released(&"left") or event.is_action_released(&"right"):
 		_move(event)
