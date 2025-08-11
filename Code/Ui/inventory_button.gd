@@ -13,6 +13,8 @@ func setup_inventory_button(new_data:ItemData) -> void:
 	assert(new_data != null, "Inventory button received null item data.")
 	item_data = new_data
 	text = item_data.get_description(GM.run_selected_character.known_items)
+	if item_data is GearData:
+		if item_data.equipped: text += " [Equipped]"
 
 
 func _focus_entered() -> void:
@@ -21,10 +23,12 @@ func _focus_entered() -> void:
 		ItemData.Type.CONSUMABLE:
 			text += " [Q to Use]"
 		ItemData.Type.GEAR:
-			text += " [E to Equip]"
+			text += " [Equipped]" if item_data.equipped else " [E to Equip]"
 		_:
 			pass
 
 
 func _focus_exited() -> void:
 	text = item_data.get_description(GM.run_selected_character.known_items)
+	if item_data is GearData:
+		if item_data.equipped: text += " [Equipped]"

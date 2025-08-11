@@ -35,10 +35,13 @@ signal input_change_focus(id:StringName, focus:bool)
 # Character
 signal character_ready
 signal pickup_item(item_data:ItemData)
-signal consume_item(item_data:ItemData)
+signal consume_item(comsumable_data:ConsumableData)
+signal equip_gear(gear_data:GearData)
 signal update_character_hp
 signal item_consumed(item_data:ItemData)
 signal action_taken(source:Node2D)
+signal gear_updated
+signal stats_updates_on_character
 
 # Effects
 signal add_effect_to_target(target:Node2D, effect:EffectData)

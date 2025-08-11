@@ -13,17 +13,13 @@ class_name InGameUi extends RidControl
 func _ready() -> void:
 	Signals.display_message.connect(_display_message)
 	Signals.update_character_hp.connect(_update_hp)
+	Signals.stats_updates_on_character.connect(_update_stats)
 
 
 func toggle_rid_control(display:bool) -> void:
 	if display:
 		messages.text = "Dungeon Level: World %s - %s" % [GM.run_selected_character.biome+1, GM.run_selected_character.biome_level+1]
-		class_label.text = GM.run_selected_character.current_class
-		hp_label.text = "%s/%s" % [GM.run_selected_character.hp, GM.run_selected_character.max_hp]
-		armor_label.text = str(GM.run_selected_character.armor)
-		mp_label.text = "%s/%s" % [GM.run_selected_character.mp, GM.run_selected_character.max_mp]
-		exp_label.text = str(GM.run_selected_character.xp)
-		level_label.text = str(GM.run_selected_character.level)
+		_update_stats()
 		Signals.input_change_focus.emit(&"character_input", true)
 		show()
 	else:
@@ -36,3 +32,12 @@ func _display_message(message:String) -> void:
 
 func _update_hp() -> void:
 	hp_label.text = "%s/%s" % [GM.run_selected_character.hp, GM.run_selected_character.max_hp]
+
+
+func _update_stats() -> void:
+	class_label.text = GM.run_selected_character.current_class
+	hp_label.text = "%s/%s" % [GM.run_selected_character.hp, GM.run_selected_character.max_hp]
+	armor_label.text = str(GM.run_selected_character.armor)
+	mp_label.text = "%s/%s" % [GM.run_selected_character.mp, GM.run_selected_character.max_mp]
+	exp_label.text = str(GM.run_selected_character.xp)
+	level_label.text = str(GM.run_selected_character.level)

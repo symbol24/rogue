@@ -5,7 +5,6 @@
 
 [resource]
 script = ExtResource("1_4k2q7")
-consumable_effect_uid = "uid://bt2dkma573tcc"
 consume_count = 1
 effect_data = ExtResource("1_etrss")
 consume_message = "Consumed a potion that heals for a small amount of HP."

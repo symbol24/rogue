@@ -10,6 +10,7 @@ var _ready_sent := false
 func _ready() -> void:
 	Signals.input_focuse_changed.connect(_input_focus_changed)
 	Signals.consume_item.connect(_consume_item)
+	Signals.equip_gear.connect(_equip_gear)
 
 
 func setup_character(coords:Vector2i) -> void:
@@ -77,14 +78,18 @@ func _exit_tree() -> void:
 func _pickup_item(coords:Vector2i) -> void:
 	var new_item:ItemData = GM.spawn_manager.get_item_by_coords(coords)
 	if new_item != null:
-		
 		GM.run_selected_character.pickup(new_item)
 		Signals.remove_item.emit(new_item)
 
 
-func _consume_item(item_data:ConsumableData) -> void:
-	var result = item_data.consume(self)
+func _consume_item(comsumable_data:ConsumableData) -> void:
+	var result = comsumable_data.consume(self)
 	if result <= 0:
-		GM.run_selected_character.remove_item(item_data)
-	Signals.item_consumed.emit(item_data)
-	GM.run_selected_character.add_item_to_known(item_data.id)
+		GM.run_selected_character.remove_item(comsumable_data)
+	Signals.item_consumed.emit(comsumable_data)
+	GM.run_selected_character.add_item_to_known(comsumable_data.id)
+
+
+func _equip_gear(gear_data:GearData) -> void:
+	GM.run_selected_character.equip(gear_data)
+	Signals.gear_updated.emit()

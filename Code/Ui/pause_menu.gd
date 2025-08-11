@@ -14,9 +14,11 @@ var active_pos := 0
 
 
 func _ready() -> void:
-	Signals.consume_button_pressed.connect(_consume_item)
+	Signals.consume_button_pressed.connect(_consume_button_pressed)
+	Signals.equip_button_pressed.connect(_equip_button_pressed)
 	Signals.item_consumed.connect(_item_consumed)
 	Signals.move_selection_up_down.connect(_move_selection)
+	Signals.gear_updated.connect(_gear_updated)
 
 
 func toggle_rid_control(display:bool) -> void:
@@ -53,7 +55,7 @@ func _clear_inventory() -> void:
 		child.queue_free()
 
 
-func _consume_item() -> void:
+func _consume_button_pressed() -> void:
 	if inventory_buttons.is_empty(): return
 	if inventory_buttons[active_pos].item_data.type == ItemData.Type.CONSUMABLE:
 		Signals.consume_item.emit(inventory_buttons[active_pos].item_data)
@@ -90,3 +92,14 @@ func _move_selection(target:StringName, is_up := false) -> void:
 	else: inventory_buttons[active_pos].grab_focus()
 
 	pause_message.text = ""
+
+
+func _equip_button_pressed() -> void:
+	if inventory_buttons.is_empty(): return
+	if inventory_buttons[active_pos].item_data.type == ItemData.Type.GEAR:
+		Signals.equip_gear.emit(inventory_buttons[active_pos].item_data)
+
+
+func _gear_updated() -> void:
+	_clear_inventory()
+	_display_inventory()

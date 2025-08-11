@@ -1,16 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://62c4uqyg5q7m"]
+[gd_scene load_steps=10 format=3 uid="uid://62c4uqyg5q7m"]
 
 [ext_resource type="Script" uid="uid://cl7nspbommb6c" path="res://Code/Utilities/biome.gd" id="1_876x6"]
 [ext_resource type="Script" uid="uid://5rygxwmuws5i" path="res://Code/Items/item_data.gd" id="2_2g0dp"]
 [ext_resource type="TileSet" uid="uid://cq5vem7f4wkgs" path="res://Data/TileSets/main_tileset.tres" id="2_2q4st"]
 [ext_resource type="PackedScene" uid="uid://dsek53jrmkie1" path="res://Scenes/MapGenerator/map_generator.tscn" id="3_5qj7j"]
 [ext_resource type="TileSet" uid="uid://bss5ykfhj5wws" path="res://Data/TileSets/item_tilest.tres" id="3_hl1a2"]
-[ext_resource type="Resource" uid="uid://cbqru876vup2t" path="res://Data/Items/health_potion_basic.tres" id="3_jbl7f"]
+[ext_resource type="Resource" uid="uid://7cln7k6lyjrp" path="res://Data/Items/Equipment/adventurer_leather_armor.tres" id="3_rfsxo"]
+[ext_resource type="Resource" uid="uid://cepqybsh3yuvr" path="res://Data/Items/Equipment/adventurer_leather_helm.tres" id="4_2mpsc"]
 [ext_resource type="PackedScene" uid="uid://driuutwgax18s" path="res://Scenes/Utilities/Managers/spawn_manager.tscn" id="4_hl1a2"]
+[ext_resource type="Resource" uid="uid://btfutxewbmdvn" path="res://Data/Items/Equipment/adventurer_sword.tres" id="5_v2xd7"]
 
 [node name="Biome01" type="Node2D"]
+position = Vector2(-1, 0)
 script = ExtResource("1_876x6")
-loot_table = Array[ExtResource("2_2g0dp")]([ExtResource("3_jbl7f")])
+loot_table = Array[ExtResource("2_2g0dp")]([ExtResource("3_rfsxo"), ExtResource("4_2mpsc"), ExtResource("5_v2xd7")])
 item_bonus_count = 0
 
 [node name="ground" type="TileMapLayer" parent="."]

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="GearData" load_steps=2 format=3 uid="uid://7cln7k6lyjrp"]
+
+[ext_resource type="Script" uid="uid://dhixgn5qd8r5f" path="res://Code/Items/equipment_data.gd" id="1_yha60"]
+
+[resource]
+script = ExtResource("1_yha60")
+equipment_type = 1
+level = 1
+bonus_armor = 2
+bonus_hp = 0
+bonus_mp = 0
+bonus_physical_power = 0
+bonus_magic_power = 0
+bonus_lives = 0
+dex_penalty = -0.2
+id = &"adventurer_leather_armor"
+atlas_coords = Vector2i(4, 7)
+count = 1
+type = 2
+unknown_description = "A worn leather chest piece."
+known_description = "Adventurer Chest Armor"
+metadata/_custom_type_script = "uid://dhixgn5qd8r5f"
