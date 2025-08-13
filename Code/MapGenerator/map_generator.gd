@@ -11,6 +11,8 @@ const IDATLAS:Array[Vector2i] = [Vector2i(11, 7), Vector2i(12, 7), Vector2i(13, 
 const TILES:TileSet = preload("uid://cq5vem7f4wkgs")
 const DEBUGROOMCOUNT:int = 1
 const SCREENSIZE := Vector2i(640, 320)
+const TILESIZE := 8
+const GRIDSIZE := SCREENSIZE/TILESIZE
 const ROOMRANGES := Vector2i(3, 5)
 const XOFFSET := [2, 10]
 const YOFFSET := [1, 5]
@@ -27,12 +29,12 @@ const DEBUGROOMLABEL := preload("uid://b3xunnc54t7ws")
 @export var tile_map_layer:TileMapLayer
 @export var item_layer:TileMapLayer
 
-var slices_through_x: Array[int]
-var slices_through_y: Array[int]
-var next_gen_id := 0
 var map:Dictionary = {}
 var entrance:Vector2i
-var rooms:Array[RoomData] = []
+var room_count:int:
+	get:
+		return _rooms.size()
+var _rooms:Array[RoomData] = []
 
 
 func _ready() -> void:
@@ -40,6 +42,20 @@ func _ready() -> void:
 	Signals.generate_map.connect(_make_map)
 	Signals.remove_item.connect(_remove_item)
 	Signals.set_items.connect(_set_items)
+
+
+func get_only_floor() -> Dictionary:
+	var result:Dictionary = {}
+	for key in map.keys():
+		if map[key] == FLOOR: result[key] = FLOOR
+	return result
+
+
+func get_walkable() -> Dictionary:
+	var result:Dictionary = {}
+	for key in map.keys():
+		if map[key] in [FLOOR, DOOR, ENTRANCE, EXIT, HALLWAY, ENEMY, ITEM]: result[key] = FLOOR
+	return result
 
 
 func _make_map(dimensions: Vector2i) -> void:
@@ -60,7 +76,7 @@ func _make_map(dimensions: Vector2i) -> void:
 
 func _clear_map(_dimension:Vector2i) -> void:
 	map.clear()
-	rooms.clear()
+	_rooms.clear()
 	for child in get_children(): child.queue_free()
 
 	for x in _dimension.x:
@@ -104,7 +120,7 @@ func _sliced_coords(sliced:Array[Array]) -> Array[Array]:
 
 
 func _get_sections() -> Array[Array]:
-	var room_count := randi_range(ROOMRANGES.x, ROOMRANGES.y)
+	var _room_count := randi_range(ROOMRANGES.x, ROOMRANGES.y)
 	var sections:Array[Array] = [
 		[null, null, null],
 		[null, null, null],
@@ -113,7 +129,7 @@ func _get_sections() -> Array[Array]:
 
 	var current_room := 0
 	var pos:Vector2i = Vector2i(randi_range(0,2), 0)
-	while current_room < room_count:
+	while current_room < _room_count:
 		while sections[pos.x][pos.y] != null:
 			pos = Vector2i(randi_range(0,2), randi_range(0,2))
 
@@ -121,7 +137,7 @@ func _get_sections() -> Array[Array]:
 		if _get_room_by_id(current_room) == null:
 			var new_room:RoomData = RoomData.new()
 			new_room.id = current_room
-			rooms.append(new_room)
+			_rooms.append(new_room)
 
 		var direction := MERGED_EAST
 		if randf() < merge_chances[current_room]:
@@ -178,7 +194,7 @@ func _display_rooms() -> void:
 	var all_cells:Array[Vector2i] = []
 
 	# Walls
-	for room in rooms:
+	for room in _rooms:
 		# Top wall
 		var x := room.first_cell.x
 		while x <= room.last_cell.x:
@@ -208,7 +224,7 @@ func _display_rooms() -> void:
 			map[cell] = WALL
 			y += 1
 
-	for room in rooms:
+	for room in _rooms:
 		var x = room.first_cell.x+1
 		while x <= room.last_cell.x-1:
 			var y = room.first_cell.y+1
@@ -240,7 +256,7 @@ func _set_entrance_and_exit() -> void:
 
 
 func _make_doors() -> void:
-	for room in rooms:
+	for room in _rooms:
 		#print("ROOM ID: ",room.id)
 		for wall in room.connecting_rooms.keys():
 			var door_pos := Vector2i.ZERO
@@ -314,19 +330,19 @@ func _check_connections(sections:Array[Array]) -> void:
 
 
 func _get_room_by_id(id:int) -> RoomData:
-	for each in rooms:
+	for each in _rooms:
 		if each.id == id: return each
 	return null
 
 
 func _identify_rooms() -> void:
-	for room in rooms:
+	for room in _rooms:
 		tile_map_layer.set_cell(room.center, 0, IDATLAS[room.id])
 
 
 func _make_hallways() -> void:
 	var all_cells:Array[Vector2i] = []
-	for room in rooms:
+	for room in _rooms:
 		for wall in room.doors.keys():
 			for each in room.doors[wall]:
 				var pos1:Vector2i = each[0]
@@ -443,13 +459,6 @@ func _is_path_valid(pos1:Vector2i, corner1:Vector2i, corner2:Vector2i, pos2:Vect
 	return true
 
 
-func _get_only_floor() -> Dictionary:
-	var result:Dictionary = {}
-	for key in map.keys():
-		if map[key] == FLOOR: result[key] = FLOOR
-	return result
-
-
 func _get_map_for_type(type:int) -> Dictionary:
 	var result:Dictionary = {}
 	for key in map.keys():
@@ -458,11 +467,11 @@ func _get_map_for_type(type:int) -> Dictionary:
 
 
 func _set_items(items:Array[ItemData]) -> void:
-	var _floor := _get_only_floor()
+	var _floor := get_only_floor()
 	assert(not _floor.is_empty(), "Floor plan is empty, why?")
 	var keys := _floor.keys()
-	print(keys[0])
-	print("-------")
+	#print(keys[0])
+	#print("-------")
 	for each in items:
 		var choice := -1
 		while choice == -1:

@@ -1,43 +1,25 @@
-class_name CharacterData extends Resource
+class_name CharacterData extends EntityData
 
 
-@export var id := &""
-@export var uid := ""
+const CRITCHANCE := 0.1
+const CRITBONUS := 2
 
-# Stats
-@export var starting_hp := 10
-@export var starting_armor := 0
-@export var starting_physical_power := 1
-@export var starting_mp := 0
-@export var starting_magical_power := 1
-@export var starting_dex := 1.0
-@export var starting_lives := 1
 
-# Current Stats
-var level := 1
-var xp := 0
-var hp:int
-var max_hp:int
-var armor:int
-var physical_power:int
-var mp:int
-var max_mp:int
-var magical_power:int
-var dex:float
-var lives:int
 var current_class:String
+var current_pos:Vector2i
 
 # Inventory
 var inventory:Array[ItemData] = []
 var known_items:Dictionary = {}
 var coins:int
+var xp := 0
 
 # Biome
 var biome:Biome.Identity
 var biome_level := 0
 
 
-func setup_character_data() -> void:
+func setup_entity_data(_spawn_level:int = 1) -> void:
 	level = 1
 	xp = 0
 	hp = starting_hp
@@ -77,7 +59,9 @@ func pickup(item:ItemData) -> void:
 
 func update_hp(value:int) -> void:
 	print("Updating hp for ", value)
-	hp = max_hp if hp + value >= max_hp else hp + value
+	if value < 0:
+		value = 0 if value - armor == 0 else value - armor
+	hp = clampi(hp + value, 0, max_hp)
 	Signals.update_character_hp.emit()
 
 
@@ -140,3 +124,7 @@ func _calculate_stat(stat:StringName) -> Variant:
 			if each.get(&"bonus_"+stat) != null: value += each.get(&"bonus_"+stat)
 			elif each.get(&"dex_penalty") != null: value += each.get(&"dex_penalty")
 	return value if stat == &"dex" else int(value)
+
+
+func add_xp(value:int = 0) -> void:
+	xp += value

@@ -17,7 +17,7 @@ func _manage_button(id:StringName) -> void:
 		&"character_select":
 			Signals.toggle_rid_control.emit(&"character_select", true, &"main_menu")
 		&"character_selected":
-			GM.run_selected_character.setup_character_data()
+			GM.run_selected_character.setup_entity_data()
 			Signals.toggle_rid_control.emit(&"character_select", false, &"character_select")
 			Signals.load_scene.emit(&"FIRST", true, true)
 		&"pause_menu_back":

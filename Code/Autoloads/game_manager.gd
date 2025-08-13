@@ -24,5 +24,9 @@ func set_active_character_data(new_data:CharacterData) -> void:
 	run_selected_character = new_data.duplicate(true)
 
 
+func get_spawn_level() -> int:
+	return run_selected_character.biome + 1
+
+
 func _map_ready() -> void:
 	Signals.spawn_character.emit()

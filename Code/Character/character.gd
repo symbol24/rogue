@@ -1,7 +1,10 @@
 class_name Character extends Node2D
 
 
-var _current_location:Vector2i = Vector2i.ZERO
+var _current_location:Vector2i = Vector2i.ZERO:
+	set(value):
+		_current_location = value
+		GM.run_selected_character.current_pos = _current_location
 var _input:InputProcess
 var _ready_sent := false
 
@@ -11,6 +14,7 @@ func _ready() -> void:
 	Signals.input_focuse_changed.connect(_input_focus_changed)
 	Signals.consume_item.connect(_consume_item)
 	Signals.equip_gear.connect(_equip_gear)
+	Signals.gain_experience.connect(_gain_experience)
 
 
 func setup_character(coords:Vector2i) -> void:
@@ -35,13 +39,29 @@ func move_character(direction:StringName) -> void:
 	if GM.map_generator != null and GM.map_generator.map.has(new_pos) and GM.map_generator.map[new_pos] != MapGenerator.WALL:
 		if GM.map_generator.map[new_pos] in [MapGenerator.FLOOR, MapGenerator.DOOR, MapGenerator.ENTRANCE, MapGenerator.EXIT, MapGenerator.HALLWAY, MapGenerator.ITEM]:
 			_current_location = new_pos
-			global_position = _current_location * 8
+			global_position = _current_location * MapGenerator.TILESIZE
 
 			if GM.map_generator.map[_current_location] == MapGenerator.ITEM:
 				_pickup_item(_current_location)
-			
-			Signals.action_taken.emit(self)
+	
+		elif GM.map_generator.map[new_pos] == MapGenerator.ENEMY:
+			var enemy:Enemy = GM.spawn_manager.get_enemy_by_coords(new_pos)
+			var chance := randf()
+			var message := "You missed %s with your wild attack."
+			if chance <= GM.run_selected_character.dex:
+				var damage:int = -GM.run_selected_character.physical_power # damage is "-"
+				message = "You hit the %s with a strong attack."
+				if chance <= CharacterData.CRITCHANCE:
+					damage *= CharacterData.CRITBONUS
+					message = "You clobbered the %s with a monster of a swing."
+				
+				var effect := HpEffectData.new()
+				effect.flat_hp_amount = damage
+				Signals.add_effect_to_target.emit(enemy, effect)
+			Signals.display_message.emit(message % enemy.data.display_name)
 
+	Signals.action_tick.emit()
+			
 
 func interact() -> void:
 	if GM.map_generator != null and GM.map_generator.map.has(_current_location):
@@ -93,3 +113,7 @@ func _consume_item(comsumable_data:ConsumableData) -> void:
 func _equip_gear(gear_data:GearData) -> void:
 	GM.run_selected_character.equip(gear_data)
 	Signals.gear_updated.emit()
+
+
+func _gain_experience(value:int = 0) -> void:
+	GM.run_selected_character.add_xp(value)

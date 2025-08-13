@@ -32,6 +32,9 @@ signal input_mode_changed
 signal input_focuse_changed
 signal input_change_focus(id:StringName, focus:bool)
 
+# Entities
+signal entity_dead(entity:EntityData)
+
 # Character
 signal character_ready
 signal pickup_item(item_data:ItemData)
@@ -39,9 +42,13 @@ signal consume_item(comsumable_data:ConsumableData)
 signal equip_gear(gear_data:GearData)
 signal update_character_hp
 signal item_consumed(item_data:ItemData)
-signal action_taken(source:Node2D)
+signal action_tick
 signal gear_updated
 signal stats_updates_on_character
+signal gain_experience(value:int)
 
 # Effects
 signal add_effect_to_target(target:Node2D, effect:EffectData)
+
+# biome
+signal biome_tick_counter_ticked

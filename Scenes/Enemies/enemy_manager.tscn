@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj7hqvshnexv8"]
+
+[ext_resource type="Script" uid="uid://bwgf0j2puil5q" path="res://Code/Enemies/enemy_manager.gd" id="1_2xmj4"]
+[ext_resource type="TileSet" uid="uid://dwhf6y64c4njf" path="res://Data/TileSets/enemy_tileset.tres" id="2_37tns"]
+
+[node name="EnemyManager" type="Node2D" groups=["enemy_manager"]]
+script = ExtResource("1_2xmj4")
+metadata/_custom_type_script = "uid://bwgf0j2puil5q"
+
+[node name="enemy_tilemap" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+tile_set = ExtResource("2_37tns")

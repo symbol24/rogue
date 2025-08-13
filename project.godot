@@ -56,6 +56,7 @@ folder_colors={
 
 map_generator=""
 spawn_manager=""
+enemy_manager=""
 
 [gui]
 

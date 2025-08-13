@@ -7,6 +7,7 @@ class_name EffectData extends Resource
 var _total_triggers := 0
 var _cycle_count := 0
 var effect_ended := false
+var effect_owner:EntityData
 
 
 func apply_effect(_target:Node2D) -> void:

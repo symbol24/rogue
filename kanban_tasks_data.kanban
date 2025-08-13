@@ -21,22 +21,21 @@
 			"uuid": "662d3979-8c01-472a-8083-61dbf897f65b",
 			"title": "Todo",
 			"tasks": [
-				"13dd907e-a267-47f3-8466-3d6ff03d9013",
-				"24cc981a-8c88-42b7-9785-c2aa67156543",
 				"90a95cae-14e9-4fc6-9e8c-345d586be2b1",
 				"743deaae-41be-4385-ab84-5298fb58fbdf",
-				"3bd40aa3-559b-4bbb-afbb-7ca38f0674c8",
 				"e324c6bb-57e8-40c9-ba93-8fae70e17083",
-				"90abf7ca-2f1a-46b1-821c-41d88663e52f",
 				"c545d950-096c-4e98-b231-3d1373eb038b",
-				"2c469363-9535-452c-aed1-e98e867cd045"
+				"2c469363-9535-452c-aed1-e98e867cd045",
+				"2bf4fd98-a339-4749-89ce-3a5784f27b7a",
+				"90abf7ca-2f1a-46b1-821c-41d88663e52f",
+				"ab073491-b4d8-4266-96ae-1921302ce32b"
 			]
 		},
 		{
 			"uuid": "684ec729-a60c-473f-846f-f7ef8ba7e33d",
 			"title": "Doing",
 			"tasks": [
-				"88c22a4c-edf4-4939-b509-f20e0d3e7420"
+				"13dd907e-a267-47f3-8466-3d6ff03d9013"
 			]
 		},
 		{
@@ -55,7 +54,11 @@
 				"93e16c1d-8dd4-464f-9acb-6d886f98b91f",
 				"2513e3b4-1fcc-4a91-b9d5-6279f5eeb18a",
 				"afaf3d4f-3a8c-4161-b04b-f0961db02653",
-				"18e2a2ed-06cb-4e54-b888-a215745dd7e5"
+				"18e2a2ed-06cb-4e54-b888-a215745dd7e5",
+				"88c22a4c-edf4-4939-b509-f20e0d3e7420",
+				"3bd40aa3-559b-4bbb-afbb-7ca38f0674c8",
+				"0c6cbf6c-971d-482f-a2aa-cc65dc6836ea",
+				"24cc981a-8c88-42b7-9785-c2aa67156543"
 			]
 		}
 	],
@@ -98,7 +101,7 @@
 		{
 			"uuid": "13dd907e-a267-47f3-8466-3d6ff03d9013",
 			"title": "basic enemy",
-			"description": "",
+			"description": "Enemy\nEnemy data\n\nmake enemy move\nmake enemy attack\n",
 			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
 			"steps": []
 		},
@@ -188,7 +191,7 @@
 		},
 		{
 			"uuid": "90abf7ca-2f1a-46b1-821c-41d88663e52f",
-			"title": "clear messages on next input",
+			"title": "clear/continue messages on next action tick",
 			"description": "",
 			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
 			"steps": []
@@ -218,6 +221,27 @@
 			"uuid": "18e2a2ed-06cb-4e54-b888-a215745dd7e5",
 			"title": "effect system",
 			"description": "effect manager on players and enemies\neffect manager is told what effect to apply\n\nEffectData contains data of effects\n\nEffect applies the effect",
+			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
+			"steps": []
+		},
+		{
+			"uuid": "0c6cbf6c-971d-482f-a2aa-cc65dc6836ea",
+			"title": "health regen per action tick",
+			"description": "",
+			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
+			"steps": []
+		},
+		{
+			"uuid": "2bf4fd98-a339-4749-89ce-3a5784f27b7a",
+			"title": "add character leveling system",
+			"description": "define how it affects stats",
+			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
+			"steps": []
+		},
+		{
+			"uuid": "ab073491-b4d8-4266-96ae-1921302ce32b",
+			"title": "refactor ingame messages to be buffered and triggrered with spacebar",
+			"description": "",
 			"category": "6d674e22-140f-4298-9c82-faa19c79589b",
 			"steps": []
 		}

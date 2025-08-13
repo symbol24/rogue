@@ -14,7 +14,7 @@ var _parent:Node2D = null:
 
 func _ready() -> void:
 	Signals.add_effect_to_target.connect(_add_effect)
-	Signals.action_taken.connect(_action_trigger)
+	Signals.action_tick.connect(_action_tick)
 
 
 func _process(_delta: float) -> void:
@@ -26,8 +26,8 @@ func _add_effect(target:Node2D, new_effect:EffectData) -> void:
 		_effect_pool.append(new_effect.duplicate())
 
 
-func _action_trigger(source:Node2D) -> void:
-	if source == null or source != _parent or _effect_pool.is_empty(): return
+func _action_tick() -> void:
+	if _effect_pool.is_empty(): return
 	for each in _effect_pool: each.update_from_action_trigger(_parent)
 
 

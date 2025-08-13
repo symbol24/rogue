@@ -28,3 +28,8 @@ func _add_hp(target:Node2D) -> void:
 			GM.run_selected_character.update_hp(flat_hp_amount)
 			return
 		GM.run_selected_character.update_hp(roundi(percent_hp_amount * GM.run_selected_character.hp))
+	elif target is Enemy:
+		if flat_hp_amount != 0:
+			target.data.update_hp(flat_hp_amount)
+			return
+		target.data.update_hp(roundi(percent_hp_amount * target.data.hp))

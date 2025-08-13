@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://62c4uqyg5q7m"]
+[gd_scene load_steps=14 format=3 uid="uid://62c4uqyg5q7m"]
 
 [ext_resource type="Script" uid="uid://cl7nspbommb6c" path="res://Code/Utilities/biome.gd" id="1_876x6"]
 [ext_resource type="Script" uid="uid://5rygxwmuws5i" path="res://Code/Items/item_data.gd" id="2_2g0dp"]
@@ -9,12 +9,17 @@
 [ext_resource type="Resource" uid="uid://cepqybsh3yuvr" path="res://Data/Items/Equipment/adventurer_leather_helm.tres" id="4_2mpsc"]
 [ext_resource type="PackedScene" uid="uid://driuutwgax18s" path="res://Scenes/Utilities/Managers/spawn_manager.tscn" id="4_hl1a2"]
 [ext_resource type="Resource" uid="uid://btfutxewbmdvn" path="res://Data/Items/Equipment/adventurer_sword.tres" id="5_v2xd7"]
+[ext_resource type="Resource" uid="uid://cuqrnnmqg7tux" path="res://Data/Items/coins_biome01.tres" id="6_v2xd7"]
+[ext_resource type="Resource" uid="uid://cbqru876vup2t" path="res://Data/Items/health_potion_basic.tres" id="7_mpu8n"]
+[ext_resource type="Script" uid="uid://bi2iff5gqyp7a" path="res://Code/Enemies/enemy_data.gd" id="8_5xtcs"]
+[ext_resource type="Resource" uid="uid://4iqtdway0is5" path="res://Data/Enemies/debug_enemy_data.tres" id="9_k3i34"]
 
 [node name="Biome01" type="Node2D"]
-position = Vector2(-1, 0)
 script = ExtResource("1_876x6")
-loot_table = Array[ExtResource("2_2g0dp")]([ExtResource("3_rfsxo"), ExtResource("4_2mpsc"), ExtResource("5_v2xd7")])
+loot_table = Array[ExtResource("2_2g0dp")]([ExtResource("3_rfsxo"), ExtResource("4_2mpsc"), ExtResource("5_v2xd7"), ExtResource("6_v2xd7"), ExtResource("7_mpu8n")])
 item_bonus_count = 0
+enemy_table = Array[ExtResource("8_5xtcs")]([ExtResource("9_k3i34")])
+enemies_spawned_at_start = 1
 
 [node name="ground" type="TileMapLayer" parent="."]
 tile_set = ExtResource("2_2q4st")

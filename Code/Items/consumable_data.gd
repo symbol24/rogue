@@ -13,6 +13,7 @@ func setup_item() -> void:
 
 
 func consume(target:Node2D) -> int:
+	effect_data.effect_owner = GM.run_selected_character
 	Signals.add_effect_to_target.emit(target, effect_data.duplicate())
 	current_count -= 1
 	return current_count
