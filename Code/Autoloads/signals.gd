@@ -46,6 +46,8 @@ signal action_tick
 signal gear_updated
 signal stats_updates_on_character
 signal gain_experience(value:int)
+signal character_level_updated
+signal character_xp_updated
 
 # Effects
 signal add_effect_to_target(target:Node2D, effect:EffectData)

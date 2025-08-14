@@ -3,6 +3,9 @@ class_name CharacterData extends EntityData
 
 const CRITCHANCE := 0.1
 const CRITBONUS := 2
+const STARTINGXPPERLEVEL := 10
+const LEVELXPPROGRESSION := 0.05
+const STATLEVELPROGRESSION := 0.05
 
 
 var current_class:String
@@ -12,7 +15,14 @@ var current_pos:Vector2i
 var inventory:Array[ItemData] = []
 var known_items:Dictionary = {}
 var coins:int
+
+# Rpogression
 var xp := 0
+var total_xp := 0
+var current_level_xp_requirement:int = STARTINGXPPERLEVEL
+var next_level_xp_requirement:int:
+	get:
+		return roundi(level * STARTINGXPPERLEVEL * LEVELXPPROGRESSION) + current_level_xp_requirement
 
 # Biome
 var biome:Biome.Identity
@@ -22,6 +32,7 @@ var biome_level := 0
 func setup_entity_data(_spawn_level:int = 1) -> void:
 	level = 1
 	xp = 0
+	total_xp = 0
 	hp = starting_hp
 	max_hp = starting_hp
 	_calculate_all_stats()
@@ -91,6 +102,18 @@ func equip(equipment_data:GearData) -> void:
 	_calculate_all_stats()
 
 
+func add_xp(value:int = 0) -> void:
+	xp += value
+	total_xp += value
+	Signals.character_xp_updated.emit()
+	if xp >= current_level_xp_requirement:
+		xp = 0
+		current_level_xp_requirement = next_level_xp_requirement
+		level += 1
+		_calculate_all_stats()
+		Signals.character_level_updated.emit()
+
+
 func _unequip(equipment_type:StringName) -> void:
 	for each in inventory:
 		if not each is GearData: continue
@@ -100,17 +123,13 @@ func _unequip(equipment_type:StringName) -> void:
 
 
 func _calculate_all_stats() -> void:
-	var pre_max_hp = max_hp
-	var pre_hp = hp
-	max_hp = _calculate_stat(&"hp")
-	if pre_hp == pre_max_hp: hp = max_hp
+	max_hp = _calculate_stat(&"hp") + (starting_hp * level * STATLEVELPROGRESSION)
+	hp = max_hp
 	armor = _calculate_stat(&"armor")
-	var pre_max_mp = max_mp
-	var pre_mp = mp
-	max_mp = _calculate_stat(&"mp")
-	if pre_mp == pre_max_mp: mp = max_mp
-	physical_power = _calculate_stat(&"physical_power")
-	magical_power = _calculate_stat(&"magical_power")
+	max_mp = _calculate_stat(&"mp") + (starting_mp * level * STATLEVELPROGRESSION)
+	mp = max_mp
+	physical_power = _calculate_stat(&"physical_power") + (starting_physical_power * level * STATLEVELPROGRESSION)
+	magical_power = _calculate_stat(&"magical_power") + (starting_magical_power * level * STATLEVELPROGRESSION)
 	dex = _calculate_stat(&"dex")
 	lives = _calculate_stat(&"lives")
 	Signals.stats_updates_on_character.emit()
@@ -124,7 +143,3 @@ func _calculate_stat(stat:StringName) -> Variant:
 			if each.get(&"bonus_"+stat) != null: value += each.get(&"bonus_"+stat)
 			elif each.get(&"dex_penalty") != null: value += each.get(&"dex_penalty")
 	return value if stat == &"dex" else int(value)
-
-
-func add_xp(value:int = 0) -> void:
-	xp += value

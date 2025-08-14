@@ -14,6 +14,7 @@ func _ready() -> void:
 	Signals.display_message.connect(_display_message)
 	Signals.update_character_hp.connect(_update_hp)
 	Signals.stats_updates_on_character.connect(_update_stats)
+	Signals.character_xp_updated.connect(_update_xp)
 
 
 func toggle_rid_control(display:bool) -> void:
@@ -39,5 +40,9 @@ func _update_stats() -> void:
 	hp_label.text = "%s/%s" % [GM.run_selected_character.hp, GM.run_selected_character.max_hp]
 	armor_label.text = str(GM.run_selected_character.armor)
 	mp_label.text = "%s/%s" % [GM.run_selected_character.mp, GM.run_selected_character.max_mp]
-	exp_label.text = str(GM.run_selected_character.xp)
+	exp_label.text = str(GM.run_selected_character.total_xp)
 	level_label.text = str(GM.run_selected_character.level)
+
+
+func _update_xp() -> void:
+	exp_label.text = str(GM.run_selected_character.total_xp)
